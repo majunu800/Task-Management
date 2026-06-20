@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Professional task manager to create, update, and track tasks." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <h1>Task Manager</h1>
+          <p>Track your tasks with login, create, update, and delete flows.</p>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="panel auth-panel" id="authPanel">
+          <div class="form-card">
+            <h2 id="authTitle">Sign in</h2>
+            <form id="authForm">
+              <label>
+                Email
+                <input type="email" id="emailInput" required />
+              </label>
+              <label>
+                Password
+                <input type="password" id="passwordInput" required />
+              </label>
+              <button type="submit" id="authButton">Continue</button>
+              <p class="toggle-text">
+                <span id="authPrompt">Need an account?</span>
+                <button type="button" class="link-button" id="toggleAuth">Register</button>
+              </p>
+              <p class="error-message" id="authError"></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="panel tasks-panel hidden" id="tasksPanel">
+          <div class="toolbar">
+            <div>
+              <h2>Your Tasks</h2>
+              <p>Manage status, due dates, and details in one place.</p>
+            </div>
+            <button class="primary-button" id="logoutButton">Logout</button>
+          </div>
+
+          <div class="task-create-card form-card">
+            <h3>Create new task</h3>
+            <form id="taskForm">
+              <label>
+                Title
+                <input type="text" id="taskTitle" required />
+              </label>
+              <label>
+                Description
+                <textarea id="taskDescription"></textarea>
+              </label>
+              <label>
+                Due date
+                <input type="date" id="taskDueDate" />
+              </label>
+              <label>
+                Status
+                <select id="taskStatus">
+                  <option value="todo">To do</option>
+                  <option value="in-progress">In progress</option>
+                  <option value="done">Done</option>
+                </select>
+              </label>
+              <label>
+                Priority
+                <select id="taskPriority">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+              <label>
+                Tags (comma separated)
+                <input type="text" id="taskTags" placeholder="e.g. work,frontend" />
+              </label>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <button type="submit" class="primary-button" id="taskSubmit">Add task</button>
+                <button type="button" id="cancelEdit" class="link-button hidden">Cancel</button>
+              </div>
+              <p class="error-message" id="taskError"></p>
+            </form>
+          </div>
+
+          <div class="task-list" id="taskList"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="cursor" class="cursor"></div>
+    <script type="module" src="app.js"></script>
+    <div id="toast" class="toast hidden"></div>
+  </body>
+</html>
